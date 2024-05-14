@@ -1,5 +1,5 @@
 import React from "react";
-import UserInfo from "./Userinfo";
+import AddUserinfo from "./AddUserinfo";
 import DisplayInfo from "./DisplayInfo";
 class MyComponent extends React.Component {
 
@@ -11,12 +11,21 @@ class MyComponent extends React.Component {
         ]
     }
 
+    handleAddNewUser = (userobj) => {
+        console.log("check data from parent: ", userobj)
+        this.setState({
+            listUser: [userobj, ...this.state.listUser]
+        })
+    }
+
 
     render() {
         //DRY: don't repeat yourself
         return (
             <div>
-                <UserInfo />
+                <AddUserinfo
+                    handleAddNewUser={this.handleAddNewUser}
+                />
                 <br /><br />
                 <DisplayInfo
                     listUser={this.state.listUser}
