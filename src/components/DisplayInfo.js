@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import React from "react";
+import './DisplayInfo.scss'
 
 class DisplayInfo extends React.Component {
 
@@ -19,10 +20,10 @@ class DisplayInfo extends React.Component {
         // console.log(listUser)
         // console.table(listUser)
         return (
-            <div>
+            <div className="display-info-container">
                 <div>
-                    <span onClick={() => { this.handleShowHide() }}> 
-                    {this.state.isShowListUser === true ? "Hide list user" : "Show list user"}
+                    <span onClick={() => { this.handleShowHide() }} style={{ cursor: 'pointer' }}>
+                        {this.state.isShowListUser === true ? "Hide list user" : "Show list user"}
                     </span>
                 </div>
                 {this.state.isShowListUser &&
@@ -31,7 +32,7 @@ class DisplayInfo extends React.Component {
                             console.log("check map user", user)
                             return (
                                 <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
-                                    <div>My name is {user.name}</div>
+                                    <div style={{ color: 'yellow', paddingTop: '50px' }}>My name is {user.name}</div>
                                     <div>My age is {user.age}</div>
                                     <hr></hr>
                                 </div>
