@@ -1,6 +1,8 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import './DisplayInfo.scss'
+import logo1 from './../logo.svg';
+
 
 class DisplayInfo extends React.Component {
 
@@ -21,6 +23,7 @@ class DisplayInfo extends React.Component {
         // console.table(listUser)
         return (
             <div className="display-info-container">
+                <img src={logo} />
                 <div>
                     <span onClick={() => { this.handleShowHide() }} style={{ cursor: 'pointer' }}>
                         {this.state.isShowListUser === true ? "Hide list user" : "Show list user"}
@@ -32,7 +35,7 @@ class DisplayInfo extends React.Component {
                             console.log("check map user", user)
                             return (
                                 <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
-                                    <div style={{ color: 'yellow', paddingTop: '50px' }}>My name is {user.name}</div>
+                                    <div>My name is {user.name}</div>
                                     <div>My age is {user.age}</div>
                                     <hr></hr>
                                 </div>
