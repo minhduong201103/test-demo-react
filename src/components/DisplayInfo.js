@@ -23,7 +23,7 @@ class DisplayInfo extends React.Component {
         // console.table(listUser)
         return (
             <div className="display-info-container">
-                <img src={logo} />
+                <img src={logo1} />
                 <div>
                     <span onClick={() => { this.handleShowHide() }} style={{ cursor: 'pointer' }}>
                         {this.state.isShowListUser === true ? "Hide list user" : "Show list user"}
