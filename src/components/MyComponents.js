@@ -15,16 +15,22 @@ class MyComponent extends React.Component {
         console.log("check data from parent: ", userobj)
         this.setState({
             listUser: [userobj, ...this.state.listUser]
+            // listUser: [...this.state.listUser, userobj]
         })
     }
 
-
+    handleDeleteUser = (userId) => {
+        let listUserClone = this.state.listUser;
+        listUserClone = listUserClone.filter(item => item.id !== userId);
+        this.setState({
+            listUser: listUserClone
+        })
+    }
     render() {
         //DRY: don't repeat yourself
 
         return (
             <>
-                <br />
                 <div className="a">
                     <AddUserinfo
                         handleAddNewUser={this.handleAddNewUser}
@@ -32,6 +38,7 @@ class MyComponent extends React.Component {
                     <br /><br />
                     <DisplayInfo
                         listUser={this.state.listUser}
+                        handleDeleteUser={this.handleDeleteUser}
                     />
                 </div>
                 <div className="b">
