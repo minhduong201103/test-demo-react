@@ -2,21 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-import MyComponent from './components/MyComponent';
 import React from 'react';
+import MyComponent from './components/MyComponent';
 
 class App extends React.Component {
-
-  state = {
-    name: 'Minh Dương',
-    address: 'Hanoi',
-    age: 22
-  };
   // JSX
   render() {
     return (
       <div>
-        My name is {this.state.name} and I'm from {this.state.address}
+        Hello World with Eric &amp; Hỏi dân IT
+        <MyComponent></MyComponent>
       </div>
     );
   }
