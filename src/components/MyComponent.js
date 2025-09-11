@@ -3,8 +3,8 @@
 // function component
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React from "react";
-import UserInfor from "./UserInfor";
 import DisplayInfor from "./DisplayInfor";
+import AddUserInfor from "./AddUserInfor";
 
 class MyComponent extends React.Component {
 
@@ -16,14 +16,22 @@ class MyComponent extends React.Component {
         ]
     }
 
+    handleAddNewUser = (userObj) => {
+        console.log("Check data from parent:", userObj)
+        this.setState({
+            listUser: [userObj,...this.state.listUser]
+        })
+    }
     // JSX
     render() {
         // DRY: Don't repeat yourseft
         return (
             <div>
-                <UserInfor />
-                <br></br>
+                <AddUserInfor
+                    handleAddNewUser={this.handleAddNewUser}
 
+                />
+                <br></br>
                 <DisplayInfor
                     listUser={this.state.listUser}
                 />
