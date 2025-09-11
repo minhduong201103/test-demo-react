@@ -1,4 +1,5 @@
 import React, { use } from "react";
+import './DisplayInfor.scss';
 
 class DisplayInfor extends React.Component {
 
@@ -18,14 +19,14 @@ class DisplayInfor extends React.Component {
         console.table(listUser)
         // props => viết tắt của properties 
         return (
-            <div>
+            <div className="display-info-container">
                 {this.state.isShowListUser &&
                     <div>
                         {listUser.map((user, index) => {
                             console.log("check map user", user)
                             return (
                                 <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
-                                    <div>My name's {user.name} </div>
+                                    <div style={{ color: 'yellow', paddingTop: '50px' }}>My name's {user.name} </div>
                                     <div>My age's {user.age} </div>
                                     <hr />
                                 </div>
