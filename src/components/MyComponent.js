@@ -24,9 +24,11 @@ class MyComponent extends React.Component {
     }
     // JSX
     render() {
-        // DRY: Don't repeat yourseft
+        // DRY: Don't repeat yourself
+
         return (
             <>
+                <br></br>
                 <div className="a">
                     <AddUserInfor
                         handleAddNewUser={this.handleAddNewUser}
