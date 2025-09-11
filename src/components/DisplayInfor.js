@@ -1,30 +1,44 @@
 import React, { use } from "react";
 
 class DisplayInfor extends React.Component {
+
+    state = {
+        isShowListUser: true
+    }
+
+    handleShowHide = () => {
+        this.setState({
+            isShowListUser: !this.state.isShowListUser
+        })
+    }
     render() {
         // Destructuring array/object
         const { listUser } = this.props; // object
-        // console.log(this.props)
+        console.log(listUser)
+        console.table(listUser)
         // props => viết tắt của properties 
         return (
             <div>
-                {listUser.map((user,index) => {
-                    return (
-                        <div key={user.id}>
-                            <div>My name's {user.name} </div>
-                            <div>My age's {user.age} </div>
-                            <hr />
-                        </div>
-                    );
-                })}
-                {/* <div>My name's {name}</div>
-                <div>My age's {age}</div>
-                <hr />
-                <div>My name's {name}</div>
-                <div>My age's {age}</div>
-                <hr />
-                <div>My name's {name}</div>
-                <div>My age's {age}</div> */}
+                {this.state.isShowListUser &&
+                    <div>
+                        {listUser.map((user, index) => {
+                            console.log("check map user", user)
+                            return (
+                                <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
+                                    <div>My name's {user.name} </div>
+                                    <div>My age's {user.age} </div>
+                                    <hr />
+                                </div>
+                            );
+                        })}
+                    </div>
+                }
+                <div>
+                    <button onClick={() => { this.handleShowHide() }}>
+
+                        {this.state.isShowListUser === true ? "Hide list user: " : "Show list user: "}
+                    </button>
+                </div>
             </div>
         )
     }
