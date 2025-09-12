@@ -21,15 +21,21 @@ class DisplayInfor extends React.Component {
         // props => viết tắt của properties 
         return (
             <div className="display-info-container">
-                <img src={logo} />
+                {/* <img src={logo} /> */}
                 {this.state.isShowListUser &&
                     <div>
                         {listUser.map((user, index) => {
                             console.log("check map user", user)
                             return (
                                 <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
-                                    <div>My name's {user.name} </div>
-                                    <div>My age's {user.age} </div>
+                                    <div>
+                                        <div>My name's {user.name} </div>
+                                        <div>My age's {user.age} </div>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => this.props.handleDeleteUser(user.id)}>Delete </button>
+                                    </div>
+
                                     <hr />
                                 </div>
                             );

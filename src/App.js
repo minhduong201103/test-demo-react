@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div className='app-container'>
-        {/* Hello World with Eric &amp; Hỏi dân IT */}
+        Hello World with Eric &amp; Hỏi dân IT
         <MyComponent></MyComponent>
       </div>
     );
