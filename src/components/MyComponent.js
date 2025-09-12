@@ -2,57 +2,48 @@
 // class component
 // function component
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
-import React from "react";
+import React, { useState } from "react";
 import DisplayInfor from "./DisplayInfor";
 import AddUserInfor from "./AddUserInfor";
 
-class MyComponent extends React.Component {
+const MyComponent = (props) => {
 
-    state = {
-        listUser: [
+    const [listUser, setlistUser] = useState(
+        [
             { id: 1, name: "Dương Nhật Minh", age: "16" },
             { id: 2, name: "Minh Bo", age: "26" },
             { id: 3, name: "Minh Duong", age: "69" },
         ]
+    )
+
+    const handleAddNewUser = (userObj) => {
+        setlistUser([userObj, ...listUser])
     }
 
-    handleAddNewUser = (userObj) => {
-        console.log("Check data from parent:", userObj)
-        this.setState({
-            listUser: [userObj, ...this.state.listUser]
-        })
-    }
-    handleDeleteUser = (userID) => {
-        let listUserClone = [...this.state.listUser];
+    const handleDeleteUser = (userID) => {
+        let listUserClone = listUser;
         listUserClone = listUserClone.filter(item => item.id !== userID)
-        this.setState({
-            listUser: listUserClone
-        })
+        setlistUser(listUserClone)
     }
-    // JSX
-    render() {
-        // DRY: Don't repeat yourself
+    return (
+        <>
+            <br></br>
+            <div className="a">
+                <AddUserInfor
+                    handleAddNewUser={handleAddNewUser}
 
-        return (
-            <>
+                />
                 <br></br>
-                <div className="a">
-                    <AddUserInfor
-                        handleAddNewUser={this.handleAddNewUser}
+                <DisplayInfor
+                    listUser={listUser}
+                    handleDeleteUser={handleDeleteUser}
+                />
 
-                    />
-                    <br></br>
-                    <DisplayInfor
-                        listUser={this.state.listUser}
-                        handleDeleteUser={this.handleDeleteUser}
-                    />
+            </div>
+            <div className="b">
 
-                </div>
-                <div className="b">
-
-                </div>
-            </>
-        );
-    }
+            </div>
+        </>
+    )
 }
 export default MyComponent;
