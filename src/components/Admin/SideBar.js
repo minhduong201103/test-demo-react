@@ -1,7 +1,8 @@
-import 'react-pro-sidebar/dist/css/style.css';
+// import 'react-pro-sidebar/dist/css/style.css';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 
-const SideBar = () => {
+const SideBar = (props) => {
     return (
         <div>
             <ProSidebar>
